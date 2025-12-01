@@ -3,12 +3,14 @@ import type { PortableTextBlock } from "@portabletext/types";
 import { LANG_COOKIE, LANGUAGES, type Language, normalizeLanguage } from "./locales";
 
 export { LANG_COOKIE, LANGUAGES, normalizeLanguage };
+export type { Language } from "./locales";
 
 export type LocalizedString = Partial<Record<Language, string>>;
 export type LocalizedBlocks = Partial<Record<Language, PortableTextBlock[]>>;
 
 export async function getLanguage(): Promise<Language> {
-  const headerLang = getHeaders().get("x-diverko-lang");
+  const headersList = await getHeaders();
+  const headerLang = headersList.get("x-diverko-lang");
   if (headerLang) {
     return normalizeLanguage(headerLang);
   }

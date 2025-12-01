@@ -35,7 +35,7 @@ type HomePagePayload = {
     title?: string;
     summary?: string;
     href?: string;
-    imageUrl?: string;
+    image?: SanityImageSource;
   }[];
   contactTitle?: string;
   contactBody?: string;
@@ -73,7 +73,6 @@ export default async function App() {
   const secondaryCta = hero?.secondaryCta;
   const heroImage = hero?.backgroundImage ? urlFor(hero.backgroundImage).width(1600).url() : '/banner.jpg';
   const missionsHeading = data?.missionsHeading ?? "";
-  const fallbackImages = ['/training.jpg', '/support.jpg', '/strategic.jpg', '/team-management.jpg'];
   const missions =
     data?.missions && data.missions.length > 0
       ? data.missions
@@ -110,10 +109,10 @@ export default async function App() {
         </div>
         <div className='flex justify-center px-0 pb-24'>
           <Swimlane className="max-w-6xl">
-            {missions.map((mission, index) => (
+            {missions.map((mission) => (
               <Tile
                 key={mission._id}
-                src={mission.image ?? fallbackImages[index % fallbackImages.length]}
+                src={mission.image}
                 title={mission.title ?? ""}
                 content={mission.summary ?? ""}
                 href={mission.href ?? "/missions"}
