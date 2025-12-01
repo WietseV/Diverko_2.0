@@ -121,8 +121,8 @@ export default async function App() {
           </Swimlane>
         </div>
       </div>
-      <PartnerStrip partners={data?.partnerLogos ?? []} />
       <TestimonialSlider testimonials={data?.testimonials ?? []} />
+      <PartnerStrip partners={data?.partnerLogos ?? []} />
       <ContactCta
         title="Ready to plan your next mission?"
         subtitle="Contact"

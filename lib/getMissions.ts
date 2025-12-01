@@ -1,7 +1,16 @@
 import { sanityClient } from "./sanity.client";
 import { missionsQuery } from "./sanity.queries";
-import type { Mission } from "@/components/mission/MissionDetailCard";
 import type { Language } from "@/lib/language";
+import type { Image as SanityImageSource } from "sanity";
+
+export type Mission = {
+  _id: string;
+  title?: string;
+  summary?: string;
+  href?: string;
+  image?: SanityImageSource;
+  categories?: string[];
+};
 
 export async function getMissions(lang: Language): Promise<Mission[]> {
   try {

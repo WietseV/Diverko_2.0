@@ -34,9 +34,6 @@ export default function Tile({ src, title, content, href, onPressed }: TileProps
       <div className="flex flex-1 flex-col gap-3 px-6 pb-7 pt-6">
         <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
         <p className="text-base text-primary_dark/80">{content}</p>
-        <span className="mt-auto text-sm font-semibold text-secondary group-hover:text-secondary/80">
-          →
-        </span>
       </div>
     </Link>
   );
