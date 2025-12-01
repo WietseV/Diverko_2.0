@@ -2,6 +2,7 @@ import { draftMode } from "next/headers";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
-  draftMode().disable();
+  const mode = await draftMode();
+  mode.disable();
   return NextResponse.redirect(new URL("/", request.url));
 }
